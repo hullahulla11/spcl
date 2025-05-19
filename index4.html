@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hey You 💖</title>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #d81b60;
+    }
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin: 15px 0;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background-color: #f48fb1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      max-width: 400px;
+    }
+    button:hover {
+      background-color: #ec407a;
+    }
+    #messageBox {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+      font-size: 1.3em;
+      color: #d81b60;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      border: 2px solid #f48fb1;
+      border-radius: 15px;
+      background: #ffe6f0;
+      user-select: none;
+    }
+    #emoji {
+      font-size: 2.5em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Beautiful 💖</h1>
+  <p>When you feel a little insecure/low about anything, just click on any of these below options and I hope it helps you feel better . 💕</p>
+  
+  <form id="pollForm">
+    <label>
+      <input type="radio" name="feeling" value="1" />
+      Looks
+    </label>
+    <label>
+      <input type="radio" name="feeling" value="2" />
+      Feeling unheard
+    </label>
+    <label>
+      <input type="radio" name="feeling" value="3" />
+      Mood feels off
+    </label>
+    <label>
+      <input type="radio" name="feeling" value="4" />
+      Lips/Skin feels dry 
+    </label>
+    <label>
+      <input type="radio" name="feeling" value="5" />
+      You just want to talk to MR SHREYAS 
+    </label>
+    
+    <button type="submit">Show me love 💕</button>
+  </form>
+
+  <div id="messageBox">
+    <div id="messageText"></div>
+    <div id="emoji"></div>
+  </div>
+
+  <audio id="sound" preload="auto"></audio>
+
+  <script>
+    const messages = {
+      "1": {
+        text: "You are absolutely stunning just as you are. You look the prettiest just how you looked the first day I saw ur insta profile and the first time I met you while u looked so stunning in that hot blue top and jeans which u wore ufff. Always make sure you are smiling, blushing , feeling good about yourself and making sure u drink enough water too :) . As always I like you , I like every single shade of you and also I like the way I annoy you afterall your giggles are soothing to hear and your voice as sweet as always. So be a good girl and better smile for me :) ✨❤️",
+        emoji: "✨❤️🌸",
+        sound: "https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"
+      },
+      "2": {
+        text: "I’m always here to listen. Your voice sounds the best when you speak freely, when you smile , when you talk , when you yap and most importantly when you say my name. Always know you have me as your shoulder to rest your head on, a ear to listen to you talk and also a hand for you to hold firmly and feel safe always :)",
+        emoji: "🎧💬🤗",
+        sound: "https://actions.google.com/sounds/v1/alarms/wind_chime_alert.ogg"
+      },
+      "3": {
+        text: "Your smile brightens the world. Remember to take care of yourself—you deserve all the love and care which I can give, and infact a lot more. You look gorgeous as you are, no matter if u have make up on or not and no matter if you have a dress on or not *nice titties  💋🌿",
+        emoji: "💋🌿😊",
+        sound: "https://actions.google.com/sounds/v1/water/water_drip.ogg"
+      },
+      "4": {
+        text: "Your skin is beautiful and I love to do touchy touchy with it. My fingers would love to explore every inch of your skin wether it is on your neck , cheeks , hands , thighs and other naughty naughty places which I sure would love to kiss and mark as mine. Make sure you kiss your hands for me at times when I am not beside you :)  🌟🌼",
+        emoji: "🌟🌼💖",
+        sound: "https://actions.google.com/sounds/v1/nature/soft_rain.ogg"
+      },
+      "5": {
+        text: "Hey baby girl, I’m right here just send me a text, call or a vn or all of the above. I like talking to you alot and infact I always want to carry you in my arms whenever I see you in front of me and everytime we speak. Talking to you gives me gullu gullu feeling in my stomach and I feel blushy blushy. Whenever you feel low just think of me giving your forhead 1 kissi * only 1 for now cuse u haven't fed me icecream off your titties yet. Also sending you lots of kisses for your lips neck thighs nose ears and your hands too afterall you desrve all the kisses to make u feel special *you are special 💞🎶",
+        emoji: "💞🎶🦋",
+        sound: "https://actions.google.com/sounds/v1/ambiences/soft_instrumental_loop.ogg"
+      }
+    };
+
+    const form = document.getElementById('pollForm');
+    const messageBox = document.getElementById('messageBox');
+    const messageText = document.getElementById('messageText');
+    const emojiDiv = document.getElementById('emoji');
+    const sound = document.getElementById('sound');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const selected = document.querySelector('input[name="feeling"]:checked');
+      if (!selected) {
+        alert("Please select an option, Srimayee");
+        return;
+      }
+      const val = selected.value;
+      const msg = messages[val];
+      messageText.textContent = msg.text;
+      emojiDiv.textContent = msg.emoji;
+      messageBox.style.display = "flex";
+
+      // Play sound
+      sound.src = msg.sound;
+      sound.volume = 0.3;
+      sound.play();
+    });
+  </script>
+<button onclick="window.location.href='index3.html'" style="margin-top: 20px; background-color: #81d4fa; color: white; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer;">
+    Take Me to the Surprise 💝
+  </button>
+</body>
+</html>

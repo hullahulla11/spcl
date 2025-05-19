@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hey You 💖</title>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      font-size: 1em;
+      width: 60px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #f48fb1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ec407a;
+    }
+    .message {
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #d81b60;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes sadFade {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .sad-emoji {
+      position: absolute;
+      font-size: 2em;
+      animation: fall 3s linear forwards;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HELLO MISS SEXXY HOTTT PRETTY GORGEOUS ANDREA ❤️</h1>
+  <p>I have a little surprise for you. But first, a tiny question!</p>
+  <p><strong>Question:</strong> DO YOU LIKE MR SHREYAS GAUTAM? IF YES PRESS 1, IF NO PRESS 0 <br>*pl press 1 :) </p>
+
+  <input type="number" id="numberInput" placeholder="Enter number" />
+  <button onclick="checkAnswer()">Submit</button>
+
+  <div class="message" id="output"></div>
+
+  <!-- Hidden audio element for jazz music -->
+  <audio id="jazzAudio" src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAwAAASW5mbwAAAA8AAAAYAAAADgAAAB4AAAASAAAADAAAABQAAAAYA..." preload="auto"></audio>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("numberInput").value;
+      const output = document.getElementById("output");
+      const jazzAudio = document.getElementById("jazzAudio");
+
+      jazzAudio.pause();
+      jazzAudio.currentTime = 0;
+
+      document.querySelectorAll('.sad-emoji').forEach(e => e.remove());
+      output.style.animation = "";
+
+      if (input == "1") {
+        output.innerHTML = "🎆🎉 Yayyyyy! 🥹❤️ I knew it! Now you gotta kiss him and never let go... 💋🔥<br> So let MR SHREYAS GAUTAM  take you on a dance... 🎷💃";
+        output.style.animation = "bounce 1s ease-in-out infinite";
+        jazzAudio.play();
+      } else if (input == "0") {
+        output.innerHTML = "Aww 😢 That hurts... but I still think you're amazing and lil cute too and also u should let MR SHREYAS GAUTAM make u feel special ";
+        output.style.animation = "sadFade 2s ease-in-out infinite";
+
+        for (let i = 0; i < 20; i++) {
+          const emoji = document.createElement("div");
+          emoji.className = "sad-emoji";
+          emoji.style.left = Math.random() * 100 + "vw";
+          emoji.style.top = "-50px";
+          emoji.textContent = "😞";
+          emoji.style.animationDuration = (2 + Math.random() * 2) + "s";
+          document.body.appendChild(emoji);
+        }
+      } else {
+        output.innerHTML = "Umm... it's a simple yes (1) or no (0), silly 🥲";
+      }
+    }
+  </script>
+<button onclick="window.location.href='index4.html'" style="margin-top: 20px; background-color: #b39ddb; color: white; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer;">
+    Feeling Low/Insecure? 💭
+  </button>
+  
+</body>
+</html>
