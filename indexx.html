@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Girl 💖</title>
+  <style>
+    body {
+      background: #ffe6f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #d63384;
+    }
+
+    #question, #message, #positiveMessage {
+      font-size: 24px;
+      margin-top: 40px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 1px solid #d63384;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .kisses {
+      font-size: 40px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hey beautiful 💕</h1>
+  <div id="question">
+    Are you feeling low? 😔
+    <br><br>
+    <input type="text" id="response" placeholder="yes / no">
+    <button onclick="checkMood()">Submit</button>
+  </div>
+
+  <div id="message" style="display:none;">
+    <p>
+      Hey gorgeous, I just want you to know<br>
+      that no matter how you're feeling right now,<br>
+      I'm always here for you to flood you with kisses hugs cuddles and a lot more hehehehhehehehe touchy touchy. You are loved, valued,<br>
+      and the most amazing person ever! 💖
+    </p>
+    <div class="kisses">💋💋💋💋💋💋💋💋💋💋</div>
+    <div class="kisses">💋💋💋💋💋💋💋💋💋💋</div>
+  </div>
+
+  <div id="positiveMessage" style="display:none;">
+    <p>
+      If you're not feeling low, then Mr. Shreyas would like you to flood him<br>
+      with kisses 😘, hugs 🤗, and some touchy touchy 😏💖💋💋💋
+    </p>
+  </div>
+
+  <script>
+    function checkMood() {
+      const answer = document.getElementById('response').value.toLowerCase().trim();
+      document.getElementById('question').style.display = "none";
+      if (answer === "yes") {
+        document.getElementById('message').style.display = "block";
+      } else {
+        document.getElementById('positiveMessage').style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
